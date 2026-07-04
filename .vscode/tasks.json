@@ -1,0 +1,51 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "C++ 编译 (C++17)",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-std=c++17",
+                "-O2",
+                "-Wall",
+                "-Wextra",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$gcc",
+            "presentation": {
+                "reveal": "always",
+                "focus": false
+            }
+        },
+        {
+            "label": "C++ 编译并运行",
+            "type": "shell",
+            "command": "",
+            "args": [],
+            "dependsOn": ["C++ 编译 (C++17)"],
+            "dependsOrder": "sequence",
+            "linux": {
+                "command": "${fileDirname}/${fileBasenameNoExtension}"
+            },
+            "osx": {
+                "command": "${fileDirname}/${fileBasenameNoExtension}"
+            },
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "focus": true
+            }
+        }
+    ]
+}
