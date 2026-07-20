@@ -1,5 +1,6 @@
-# Compiled binaries
+# Compiled binaries (no extension = executable on macOS)
 demo
+*.out
 
 # macOS
 .DS_Store

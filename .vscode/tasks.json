@@ -2,19 +2,9 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "C++ 编译 (C++17)",
+            "label": "编译并运行",
             "type": "shell",
-            "command": "g++",
-            "args": [
-                "-std=c++17",
-                "-O2",
-                "-Wall",
-                "-Wextra",
-                "-g",
-                "${file}",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
-            ],
+            "command": "g++ -std=c++17 -O2 -Wall -Wextra -g -I'${workspaceFolder}' '${file}' -o '${fileDirname}/${fileBasenameNoExtension}' && '${fileDirname}/${fileBasenameNoExtension}'",
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -22,29 +12,22 @@
             "problemMatcher": "$gcc",
             "presentation": {
                 "reveal": "always",
-                "focus": false
+                "focus": true,
+                "panel": "dedicated"
             }
         },
         {
-            "label": "C++ 编译并运行",
+            "label": "编译并运行 (文件输入)",
             "type": "shell",
-            "command": "",
-            "args": [],
-            "dependsOn": ["C++ 编译 (C++17)"],
-            "dependsOrder": "sequence",
-            "linux": {
-                "command": "${fileDirname}/${fileBasenameNoExtension}"
-            },
-            "osx": {
-                "command": "${fileDirname}/${fileBasenameNoExtension}"
-            },
+            "command": "g++ -std=c++17 -O2 -Wall -Wextra -g -I'${workspaceFolder}' '${file}' -o '${fileDirname}/${fileBasenameNoExtension}' && '${fileDirname}/${fileBasenameNoExtension}' < input.txt",
             "group": {
-                "kind": "test",
-                "isDefault": true
+                "kind": "test"
             },
+            "problemMatcher": "$gcc",
             "presentation": {
                 "reveal": "always",
-                "focus": true
+                "focus": true,
+                "panel": "dedicated"
             }
         }
     ]

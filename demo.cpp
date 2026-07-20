@@ -1,23 +1,65 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+// #include<iostream>
+// using namespace std;
+
+
+// int x(string a,string b){
+//     int sum =0;
+//     for(char c:a){
+//         for(char d:b){
+//             sum+=(c-'0')*(d-'0');
+//         }
+//     }
+//     return sum;
+// }
+
+// int main(){
+//     string a,b;
+//     cin>>a>>b;
+//     cout<<x(a,b)<<endl;
+//     return 0;
+// }
+
+#include<bits/stdc++.h>
+
+#include<bits/stdc++.h>
 using namespace std;
 
-// 示例：两数之和
-vector<int> twoSum(vector<int>& nums, int target) {
-    int l = 0, r = nums.size() - 1;
-    while (l < r) {
-        int sum = nums[l] + nums[r];
-        if (sum == target) return {l, r};
-        else if (sum < target) l++;
-        else r--;
-    }
-    return {-1, -1};
+void swap(string a,int i, int j){
+    char tmp='0';
+    tmp=a[i];
+    a[i]=a[j];
+    a[j]=tmp;
 }
 
-int main() {
-    vector<int> nums = {2, 7, 11, 15};
-    auto res = twoSum(nums, 9);
-    cout << "结果: [" << res[0] << ", " << res[1] << "]" << endl;
+bool ischar(char c){
+    if(c>='A'&& c<='z')
+        return true;
+    return false;
+}
+
+int main(){
+    string line;
+    getline(cin,line);
+    int n= line.size();
+
+    for(int i=0;i<n;i++){
+        int j=i;
+        int tag=0;
+        while(ischar(line[j])&&j<n){
+            j++;
+        }
+        tag=j;
+        j--;
+        while(i<j){
+            swap(line,i,j);
+            i++,j--;
+        }
+        while(!ischar(line[tag])){
+            tag++;
+        }
+        i=tag;
+    }
+
+    cout<<line<<endl;
     return 0;
 }
